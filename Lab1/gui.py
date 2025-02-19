@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import font
-from logic import is_valid_quaternary, add_quaternary, subtract_quaternary
+from logic import *
 
 
 class CalculatorGUI:
@@ -26,10 +26,9 @@ class CalculatorGUI:
                              "relief": tk.RAISED}
 
         buttons = [
-            '7', '8', '9', 'C',
-            '4', '5', '6', '+',
-            '1', '2', '3', '-',
-            '0', '=', '<-', 'Info'
+            '+', 'C', '+',
+            '-', 'Info', '-',
+            '0', '<-', '=',
         ]
         row, col = 1, 0
         for button in buttons:
@@ -51,7 +50,7 @@ class CalculatorGUI:
                                                     padx=5, pady=5,
                                                     sticky="nsew")
             col += 1
-            if col > 3:
+            if col > 2:
                 col = 0
                 row += 1
 
@@ -73,14 +72,14 @@ class CalculatorGUI:
         expression = self.input_entry.get()
         if '+' in expression:
             num1, num2 = expression.split('+')
-            if is_valid_quaternary(num1.strip(), num2.strip()):
-                result = add_quaternary(num1.strip(), num2.strip())
+            if is_valid_sym_ternary(num1.strip(), num2.strip()):
+                result = add_sym_ternary(num1.strip(), num2.strip())
             else:
                 result = None
         elif '-' in expression:
             num1, num2 = expression.split('-')
-            if is_valid_quaternary(num1.strip(), num2.strip()):
-                result = subtract_quaternary(num1.strip(), num2.strip())
+            if is_valid_sym_ternary(num1.strip(), num2.strip()):
+                result = sub_sym_ternary(num1.strip(), num2.strip())
             else:
                 result = None
 
