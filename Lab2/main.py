@@ -1,4 +1,5 @@
 from tkinter import Tk
+
 from app_ui import ApplicationUI
 
 def main():

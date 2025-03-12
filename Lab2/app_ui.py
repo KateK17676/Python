@@ -1,4 +1,7 @@
+from tkinter import messagebox
 from tkinter.ttk import Frame, Label, Entry, Button, Treeview
+
+from Lab2.solver import Solver
 
 
 class ApplicationUI:
@@ -47,7 +50,29 @@ class ApplicationUI:
 
 
     def solve(self):
-        pass
+        try:
+            f = self.function_entry.get()
+            a = float(self.start_entry.get())
+            b = float(self.end_entry.get())
+            eps = float(self.eps_entry.get())
+            max_iter = int(self.max_iter_entry.get())
+            h = float(self.n_max_entry.get())
+        except Exception as e:
+            messagebox.showerror("Ошибка ввода", f'Проверьте корректность введённых данных!\n{str(e)}')
+            return
+        solver = Solver(f, a, b, eps, max_iter, h)
+        results = solver.solve()
+        self.results_table.delete(*self.results_table.get_children())
+        for results in results:
+            self.results_table.insert("", "end", values=(results[0],
+                                                         f'[{results[1][0]:.4f}; {results[1][1]:.4f}]',
+                                                         "Нет" if results[2] is None else f"{results[2]:.4f}",
+                                                         "Нет" if results[3] is None else f"{results[3]:.4f}",
+                                                         results[4],
+                                                         results[5]))
+
+
+
 
 
 
