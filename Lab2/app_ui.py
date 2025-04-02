@@ -1,6 +1,7 @@
 from tkinter import messagebox
 from tkinter.ttk import Frame, Label, Entry, Button, Treeview
 
+from Lab2.plotter import Plotter
 from Lab2.solver import Solver
 
 
@@ -70,10 +71,4 @@ class ApplicationUI:
                                                          "Нет" if results[3] is None else f"{results[3]:.4f}",
                                                          results[4],
                                                          results[5]))
-
-
-
-
-
-
-
+        Plotter(solver).plot()

@@ -4,6 +4,7 @@ import sympy as sp
 
 class Solver:
     def __init__(self, f, a, b, eps, max_iter, h):
+        self.f_str = f
         self.f = sp.lambdify(sp.symbols('x'), f, "numpy")
         self.a = a
         self.b = b
