@@ -58,6 +58,14 @@ class ApplicationUI:
             eps = float(self.eps_entry.get())
             max_iter = int(self.max_iter_entry.get())
             h = float(self.n_max_entry.get())
+            """
+            f = "cos(x) * 4 * x"
+            a = -10
+            b = 10
+            eps = 0.01
+            max_iter = 20
+            h = 1
+            """
         except Exception as e:
             messagebox.showerror("Ошибка ввода", f'Проверьте корректность введённых данных!\n{str(e)}')
             return
